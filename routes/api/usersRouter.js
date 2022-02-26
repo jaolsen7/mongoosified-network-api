@@ -7,15 +7,15 @@ const {
     deleteUser,
   } = require('../../controllers/usersController.js');
   
-  // /api/courses
-  router.route('/').get(getCourses).post(createCourse);
+  // /api/users
+  router.route('/').get(getUsers).post(createUser);
   
-  // /api/courses/:courseId
+  // /api/users/:userId
   router
-    .route('/:courseId')
-    .get(getSingleCourse)
-    .put(updateCourse)
-    .delete(deleteCourse);
+    .route('/:userId')
+    .get(getSingleUser)
+    .put(updateUser)
+    .delete(deleteUser);
 
 
 module.exports = router;
