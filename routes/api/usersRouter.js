@@ -5,6 +5,8 @@ const {
     createUser,
     updateUser,
     deleteUser,
+    addFriend,
+    removeFriend,
   } = require('../../controllers/usersController.js');
   
   // /api/users
@@ -19,9 +21,11 @@ const {
     .put(updateUser)
     .delete(deleteUser);
 
-  // /api/users/friends/:friendId
-  router.route('/:userId/friends/:friendId')
+// /api/users/friends/:friendId
+router.route('/:userId/friends')
     .post(addFriend)
+
+router.route('/:userId/friends/:friendId')
     .delete(removeFriend);
 
 module.exports = router;

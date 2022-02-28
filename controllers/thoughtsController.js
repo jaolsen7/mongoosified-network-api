@@ -16,7 +16,7 @@ module.exports = {
           )
           .catch((err) => res.status(500).json(err));
       },
-      createThought(req, res) {
+    createThought(req, res) {
         Thought.create(req.body)
           .then((thought) => {
             User.findOneAndUpdate(
@@ -30,7 +30,7 @@ module.exports = {
             return res.status(500).json(err);
           });
       },
-      updateThought(req, res) {
+    updateThought(req, res) {
         Thought.findOneAndUpdate(
           { _id: req.params.thoughtId },
           { $set: req.body },
@@ -43,7 +43,7 @@ module.exports = {
           )
           .catch((err) => res.status(500).json(err));
       },
-      deleteThought(req, res) {
+    deleteThought(req, res) {
         Thought.findOneAndDelete({ _id: req.params.thoughtId })
           .then((thought) =>
             !thought
@@ -53,7 +53,7 @@ module.exports = {
           .then(() => res.json({ message: 'Thought and reactions deleted!' }))
           .catch((err) => res.status(500).json(err));
       },
-      addReaction(req, res) {
+    addReaction(req, res) {
         console.log('You are adding a reaction');
         Reaction.create(req.body)
           .then((reaction) => {
@@ -65,7 +65,7 @@ module.exports = {
               .catch((err) => res.status(500).json(err));
           });
       },
-      removeReaction(req, res) {
+    removeReaction(req, res) {
         Thought.findOneAndUpdate(
           { _id: req.params.thoughtId },
           { $pull: { reactions: { _id: req.params._id } } },
