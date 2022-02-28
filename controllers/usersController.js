@@ -4,6 +4,7 @@ module.exports = {
     // Get all users
     getUsers(req, res) {
       User.find()
+        .populate('thoughts')
         .then((users) => res.json(users))
         .catch((err) => res.status(500).json(err));
     },
@@ -46,7 +47,7 @@ module.exports = {
               ? res.status(404).json({ message: 'No user with that ID' })
               : Thought.deleteMany({ _id: { $in: user.thoughts } })
           )
-          .then(() => res.json({ message: 'Course and thoughts deleted!' }))
+          .then(() => res.json({ message: 'User and thoughts deleted!' }))
           .catch((err) => res.status(500).json(err));
       },
       addFriend(req, res) {
