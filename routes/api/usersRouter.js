@@ -21,11 +21,8 @@ const {
     .put(updateUser)
     .delete(deleteUser);
 
-// /api/users/friends/:friendId
-router.route('/:userId/friends')
-    .post(addFriend)
-
 router.route('/:userId/friends/:friendId')
+    .post(addFriend)
     .delete(removeFriend);
 
 module.exports = router;
